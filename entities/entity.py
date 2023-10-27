@@ -6,9 +6,9 @@ from my_decorators.repr_decorator import inject_generic_repr
 @inject_generic_repr
 class Entity(ABC):
 
-    def __init__(self, name, position, movement_distance):
+    def __init__(self, name: str, position: List[float], movement_distance: float):
         self.name: str = name
-        self.position: List[float, float] = position
+        self.position: List[float] = position
         self.movement_distance: float = movement_distance
 
     @abstractmethod

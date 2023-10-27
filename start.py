@@ -1,6 +1,6 @@
-from entities.entity import Entity
+from entities.sheep import Sheep
 
-ent = Entity("Sheep", [10, 10], 5)
+ent = Sheep("Sheep", [10, 10], 5)
 
 print(ent)
 print(repr(ent))
