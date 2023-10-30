@@ -1,5 +1,4 @@
 from typing import Tuple, List
-
 from entities.entity import Entity
 
 

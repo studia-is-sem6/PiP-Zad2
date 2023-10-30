@@ -12,15 +12,14 @@ class Entity(ABC):
         self.movement_distance: float = movement_distance
 
     @abstractmethod
-    def move(self) -> Tuple[float, float]:
+    def move(self) -> Tuple[float]:
         # Moves entity and returns it's new position
         # TODO: implement entity move
         pass
 
-    def get_position(self) -> Tuple[float, float]:
+    def get_position(self) -> tuple[float]:
         # Returns entity position in a tuple format
-        # TODO: implement get_position method of entity
-        pass
+        return tuple(self.position)
 
     def set_position(self, x: float, y: float) -> None:
         # Sets entity position

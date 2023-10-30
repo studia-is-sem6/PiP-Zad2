@@ -154,4 +154,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+__pycache__/
+tests/__pycache__
+
 # End of https://www.toptal.com/developers/gitignore/api/pycharm,windows,virtualenv
