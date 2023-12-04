@@ -68,5 +68,5 @@ class Game:
             print("Osiągnięto maksymalną liczbę rund.")
 
 # Przykład użycia:
-game = Game(num_sheep=10, max_rounds=50)
+game = Game(num_sheep=10, max_rounds=10)
 game.run_simulation()

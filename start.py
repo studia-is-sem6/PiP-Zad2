@@ -1,4 +1,4 @@
-from entities.sheep import Sheep
+from entities import Sheep
 
 ent = Sheep("Sheep", [10, 10], 5)
 
