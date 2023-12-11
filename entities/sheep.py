@@ -1,9 +1,9 @@
 from typing import List, Tuple
 import random
-from entities.entity import Entity
+import entities
 
 
-class Sheep(Entity):
+class Sheep(entities.Entity):
     # pylint: disable=consider-using-alias
     def __init__(self, name: str, position: List[float], movement_distance: float):
         super().__init__(name, position, movement_distance)
@@ -22,4 +22,5 @@ class Sheep(Entity):
             case 'west':
                 self.position[1] -= self.movement_distance
 
+        self.position = [round(self.position[0], 3), round(self.position[1], 3)]
         return tuple(self.position)
