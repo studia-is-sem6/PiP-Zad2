@@ -29,6 +29,9 @@ class Entity(ABC):
     def __str__(self):
         return f"{self.name} is at position {self.position}"
 
+    def verbose_print(self) -> str:
+        return f"{self.name} is at position {self.position} and it's movement distance is {self.movement_distance}"
+
     def __repr__(self):
         return ""
 
