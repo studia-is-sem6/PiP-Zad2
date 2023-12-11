@@ -3,6 +3,7 @@ from entities.entity import Entity
 
 
 class Wolf(Entity):
+    # pylint: disable=consider-using-alias
     def __init__(self, name: str, position: List[float], movement_distance: float):
         super().__init__(name, position, movement_distance)
 
