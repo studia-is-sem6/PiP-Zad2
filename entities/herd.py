@@ -12,8 +12,8 @@ class Herd:
         self.herd: List[Sheep] = []
         for i in range(number_of_individuals):
             self.herd.append(Sheep(f"Sheep {i}",
-                                   [round(random.uniform(-1*self.initial_pos_limit, self.initial_pos_limit), 1),
-                                            round(random.uniform(-1*self.initial_pos_limit, self.initial_pos_limit), 1)],
+                                   [round(random.uniform(-1*self.initial_pos_limit, self.initial_pos_limit), 3),
+                                            round(random.uniform(-1*self.initial_pos_limit, self.initial_pos_limit), 3)],
                                    self.movement_distance_of_herd))
 
     def __iter__(self):

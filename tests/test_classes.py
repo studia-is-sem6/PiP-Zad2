@@ -10,6 +10,15 @@ def test_sheep_class():
     assert sheep.get_position() == (37, -21)
     assert sheep.movement_distance == 0.5
 
+    for _ in range(100):
+        sheep_pos = list(sheep.position)
+        new_sheep_pos = sheep.move()
+        if sheep_pos[0] == new_sheep_pos[0]:
+            assert abs(new_sheep_pos[1] - sheep_pos[1]) == sheep.movement_distance
+        else:
+            assert abs(new_sheep_pos[0] - sheep_pos[0]) == sheep.movement_distance
+
+
 
 def test_wolf_class():
     wolf = Wolf("Ben", [-12, 34], 2)

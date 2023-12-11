@@ -21,17 +21,14 @@ class Entity(ABC):
         # Returns entity position in a tuple format
         return tuple(self.position)
 
-    def set_position(self, x: float, y: float) -> None:
+    def set_position(self, x: float, y: float) -> Tuple[float]:
         # Sets entity position
-        # TODO: implement set_position method of entity
-        pass
+        self.position = [x, y]
+        return tuple(self.position)
 
     def __str__(self):
         return f"{self.name} is at position {self.position}"
 
     def verbose_print(self) -> str:
         return f"{self.name} is at position {self.position} and it's movement distance is {self.movement_distance}"
-
-    def __repr__(self):
-        return ""
 
