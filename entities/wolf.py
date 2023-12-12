@@ -12,18 +12,38 @@ class Wolf(entities.Entity):
         super().__init__(name, position, movement_distance)
         self.herd: entities.Herd = None
         self.target: entities.Sheep = None
+        self.caught_targets = 0
 
     def move(self) -> Tuple[float]:
         # TODO: implement move method for Wolf
-        last_dist = self.calculate_distance(self.herd.herd[0].position, self.position)
+        # last_dist = self.calculate_distance(self.herd.herd[0].position, self.position)
+        best_dist = 999
         for sheep in self.herd:
             new_dist = self.calculate_distance(sheep.position, self.position)
             print(f"Owca {sheep}, jest w odległosci {new_dist} od wilka")
-            if new_dist < last_dist:
-                last_dist = new_dist
+            if new_dist < best_dist:
+                best_dist = new_dist
                 self.target = sheep
 
-        print(f"Najbliższa owca {self.target}, w odległości {last_dist}")
+        print(f"Najbliższa owca {self.target}, w odległości {best_dist}")
+
+        if best_dist <= self.movement_distance:
+            self.herd.herd.remove(self.target)
+            print(f"============\nOwca {self.target} została złapana przez wilka jako {self.caught_targets+1}!!!\n============")
+            self.position = self.target.position
+            self.caught_targets += 1
+            self.target = None
+        else:
+            delta_x = self.target.position[0] - self.position[0]
+            delta_y = self.target.position[1] - self.position[1]
+            proportion = self.movement_distance / best_dist
+
+            delta_x *= proportion
+            delta_y *= proportion
+
+            self.position[0] = self.position[0] + delta_x
+            self.position[1] = self.position[1] + delta_y
+
         return tuple(self.position)
 
         # if last_dist <= self.movement_distance:

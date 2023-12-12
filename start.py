@@ -12,12 +12,13 @@ from entities import Sheep
 
 from entities import Herd
 
-herd = Herd(150, 10, 0.5)
+herd = Herd(15, 10, 0.5)
 
 for sheep in herd:
     print(sheep)
 
 # herd.herd.pop()
-#
-# for sheep in herd:
-#     print(sheep)
+herd.herd.remove(herd.herd[4])
+
+for sheep in herd:
+    print(sheep)
