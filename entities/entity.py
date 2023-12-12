@@ -27,7 +27,7 @@ class Entity(ABC):
         return tuple(self.position)
 
     def __str__(self):
-        return f"{self.name} is at position {self.position}"
+        return f"{self.name} is at position {[round(self.position[0], 3), round(self.position[1], 3)]}"
 
     def verbose_print(self) -> str:
         return f"{self.name} is at position {self.position} and it's movement distance is {self.movement_distance}"

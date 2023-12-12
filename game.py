@@ -1,3 +1,5 @@
+import json
+import csv
 from entities import Herd, Wolf
 
 
@@ -12,20 +14,53 @@ class Game:
         self.herd.move_herd()
         self.wolf.move()
 
-succes = []
-for game_number in range(1000):
+# succes = []
+# for game_number in range(1000):
+#
+#     herd = Herd(15, 10, 0.5)
+#     wolf = Wolf("Wliczur", [0, 0], 1.0)
+#
+#     game = Game(herd, wolf)
+#
+#     for round_number in range(65):
+#         print(f"\n\n======================\nRunda numer {round_number+1}\n======================\n")
+#         if len(herd.herd) == 0:
+#             succes.append(game_number)
+#             break
+#         game.advance_round()
+#
+#     print(f"\n\nWilk złapał {wolf.caught_targets} owiec")
+#
+# print(f"Koniec 1000 gier. Udało się w {len(succes)} grach. {succes}")
 
-    herd = Herd(15, 10, 0.5)
-    wolf = Wolf("Wliczur", [0, 0], 1.0)
+json_list = []
+csv_list = []
 
-    game = Game(herd, wolf)
+herd = Herd(15, 10, 0.5)
+wolf = Wolf("Wliczur", [0, 0], 1.0)
+game = Game(herd, wolf)
 
-    for round_number in range(50):
-        print(f"\n\n======================\nRunda numer {round_number+1}\n======================\n")
-        game.advance_round()
+for round_number in range(50):
+    print(f"\n\n======================\nRunda numer {round_number+1}\n======================\n")
+    if len(herd.herd) == 0:
+        break
+    # game.advance_round()
+    print(f"Pozycja wilka: {wolf}")
+    print(f"Liczba żywych owiec {len(herd.herd)}")
+    print(f"Najbliższa owca {wolf.target}, w odległości {wolf.best_dist} - jest aktywnie goniona przez wilka")
 
-    print(f"\n\nWilk złapał {wolf.caught_targets} owiec")
-    if wolf.caught_targets == 15:
-        succes.append(game_number)
+    json_list.append({"round_no": round_number,
+                      "wolf_pos": wolf.position,
+                      "sheep_pos": herd.get_all_herd_pos_with_nulls()})
+    csv_list.append([round_number+1, len(herd.herd)])
+    game.advance_round()
 
-print(f"Koniec 1000 gier. Udało się w {succes} grze")
+with open("game.json", "w") as f:
+    json.dump(json_list, f, indent=4)
+
+with open("rounds.csv", mode='w', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerows(csv_list)
+
+print(f"\n\nWilk złapał {wolf.caught_targets} owiec")
+

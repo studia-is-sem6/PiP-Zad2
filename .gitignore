@@ -158,3 +158,6 @@ __pycache__/
 tests/__pycache__
 
 # End of https://www.toptal.com/developers/gitignore/api/pycharm,windows,virtualenv
+
+game.json
+rounds.csv

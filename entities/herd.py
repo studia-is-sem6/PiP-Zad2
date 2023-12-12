@@ -23,3 +23,18 @@ class Herd:
     def move_herd(self):
         for sheep in self.herd:
             sheep.move()
+
+    def get_all_herd_pos(self) -> List[List[float]]:
+        positions = []
+        for sheep in self:
+            positions.append(sheep.position)
+        return positions
+
+    def get_all_herd_pos_with_nulls(self) -> List[List[float]]:
+        positions = []
+        for sheep in self:
+            positions.append(sheep.position)
+        for _ in range(self.number_of_individuals - len(positions)):
+            positions.append(None)
+
+        return positions
